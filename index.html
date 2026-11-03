@@ -1,5 +1,268 @@
-<html>
-  <body>
-    <h1>Hello</h1>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rebecca Nevill</title>
+  <meta name="description" content="Rebecca Nevill — Team Lead Process Excellence Final Mile at Zalando, Berlin. Cross-functional leadership and operational excellence.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231f3a5f'/%3E%3Ctext x='50' y='66' font-family='Georgia,serif' font-size='46' fill='white' text-anchor='middle'%3ERN%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #faf8f5;
+      --surface: #ffffff;
+      --text: #1d1d1f;
+      --muted: #5b5b60;
+      --line: #e4e0da;
+      --accent: #1f3a5f;
+      --accent-soft: #e8edf4;
+      --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141518;
+        --surface: #1c1d21;
+        --text: #ecebe8;
+        --muted: #a3a3a8;
+        --line: #2d2e33;
+        --accent: #9cb8dc;
+        --accent-soft: #23293a;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 17px/1.65 var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+    header.top {
+      border-bottom: 1px solid var(--line);
+    }
+    header.top .wrap {
+      display: flex; justify-content: space-between; align-items: center;
+      height: 60px;
+    }
+    .brand { font-family: var(--serif); font-size: 1.15rem; color: var(--text); text-decoration: none; }
+    nav a { color: var(--muted); text-decoration: none; margin-left: 20px; font-size: .95rem; }
+    nav a:hover { color: var(--text); }
+    @media (max-width: 520px) { nav { display: none; } }
+
+    .hero { padding: 88px 0 56px; }
+    .hero h1 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(2.4rem, 6vw, 3.4rem); line-height: 1.1;
+      margin: 0 0 6px;
+    }
+    .pronouns { color: var(--muted); font-size: .95rem; margin: 0 0 20px; }
+    .headline { font-size: 1.25rem; margin: 0 0 8px; max-width: 34em; }
+    .meta { color: var(--muted); margin: 0 0 28px; }
+    .btn {
+      display: inline-block; padding: 10px 18px; border-radius: 6px;
+      background: var(--accent); color: var(--bg); text-decoration: none; font-weight: 500;
+    }
+    .btn:hover { opacity: .9; }
+
+    section { padding: 48px 0; border-top: 1px solid var(--line); }
+    h2 {
+      font-family: var(--serif); font-weight: 400; font-size: 1.6rem;
+      margin: 0 0 24px;
+    }
+    p { margin: 0 0 16px; }
+
+    .stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+      margin: 28px 0 0; padding: 0; list-style: none;
+    }
+    .stats li {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+      padding: 16px;
+    }
+    .stats strong { display: block; font-family: var(--serif); font-size: 1.8rem; font-weight: 400; color: var(--accent); }
+    .stats span { color: var(--muted); font-size: .9rem; line-height: 1.4; display: block; }
+    @media (max-width: 520px) { .stats { grid-template-columns: 1fr; } }
+
+    .org { margin-bottom: 40px; }
+    .org:last-child { margin-bottom: 0; }
+    .org-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; margin-bottom: 16px; }
+    .org-head h3 { font-size: 1.2rem; margin: 0; }
+    .org-head .where { color: var(--muted); font-size: .95rem; }
+    .roles { list-style: none; margin: 0; padding: 0 0 0 20px; border-left: 2px solid var(--line); }
+    .role { position: relative; padding-bottom: 24px; }
+    .role:last-child { padding-bottom: 0; }
+    .role::before {
+      content: ""; position: absolute; left: -27px; top: 9px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--bg); border: 2px solid var(--accent);
+    }
+    .role.current::before { background: var(--accent); }
+    .role h4 { margin: 0; font-size: 1.05rem; }
+    .when { color: var(--muted); font-size: .9rem; margin: 2px 0 10px; }
+    .tag { display: inline-block; background: var(--accent-soft); color: var(--accent); font-size: .78rem; padding: 1px 8px; border-radius: 99px; margin-left: 6px; vertical-align: 2px; }
+    .role ul { margin: 0; padding-left: 18px; }
+    .role li { margin-bottom: 6px; }
+
+    .chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+    .chips li { border: 1px solid var(--line); background: var(--surface); padding: 5px 12px; border-radius: 99px; font-size: .92rem; }
+
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    @media (max-width: 620px) { .two { grid-template-columns: 1fr; } }
+    .two h3 { font-size: 1rem; margin: 0 0 12px; color: var(--muted); font-weight: 500; }
+    .plain { list-style: none; margin: 0; padding: 0; }
+    .plain li { margin-bottom: 10px; }
+    .plain small { color: var(--muted); display: block; }
+
+    footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="#">Rebecca Nevill</a>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="hero">
+        <h1>Rebecca Nevill</h1>
+        <p class="pronouns">She/Her</p>
+        <p class="headline">Team Lead Process Excellence, Final Mile at Zalando. Cross-functional leadership and operational excellence.</p>
+        <p class="meta">Berlin, Germany</p>
+        <a class="btn" href="https://www.linkedin.com/in/rnevill/" rel="me">Connect on LinkedIn</a>
+      </div>
+
+      <section id="about">
+        <h2>About</h2>
+        <p>Strategic project and process manager. I lead projects and transform complex processes. I steer major business initiatives such as new market expansions and operational design.</p>
+        <p>At Zalando I was a key stakeholder in the on-time expansion into 8 new markets. I also led the rollout of a new Asana-based project management system that streamlined operations.</p>
+        <p>I work best in cross-functional teams. I give the direction and support that turn strategy into on-time delivery. Next, I want to find new room for innovation and help set a long-term strategic agenda.</p>
+        <ul class="stats">
+          <li><strong>8</strong><span>new markets launched on time</span></li>
+          <li><strong>20+</strong><span>carrier onboarding projects</span></li>
+          <li><strong>300+</strong><span>international shipping projects</span></li>
+        </ul>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+
+        <div class="org">
+          <div class="org-head">
+            <h3>Zalando</h3>
+            <span class="where">Berlin, Germany · 2021–present</span>
+          </div>
+          <ol class="roles">
+            <li class="role current">
+              <h4>Team Lead Process Excellence Final Mile <span class="tag">Current</span></h4>
+              <p class="when">Jun 2026 – present · Hybrid</p>
+            </li>
+            <li class="role">
+              <h4>Senior Process Manager</h4>
+              <p class="when">Feb 2025 – Jun 2026</p>
+            </li>
+            <li class="role">
+              <h4>Project Manager Delivery Excellence</h4>
+              <p class="when">Dec 2021 – Feb 2025</p>
+              <ul>
+                <li>Led the rollout of a new project management system. Communication, collaboration and execution improved.</li>
+                <li>Cut go-live time for new carrier onboarding by 2–4 weeks by upskilling the team and simplifying technical processes.</li>
+                <li>Built and ran a cross-functional roadmap used by five teams. Transparency up 75%.</li>
+                <li>Linked Operations and Tech across 20+ onboarding projects, using expertise in 3+ systems.</li>
+                <li>Gave senior management detailed status reports, so risks were caught early.</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+
+        <div class="org">
+          <div class="org-head">
+            <h3>TecEx — Turnkey Import Compliance</h3>
+            <span class="where">2019–2021</span>
+          </div>
+          <ol class="roles">
+            <li class="role">
+              <h4>Senior In-Country Expert, EMEA</h4>
+              <p class="when">Jan 2021 – Sep 2021</p>
+              <ul>
+                <li>Led and mentored the team. Took load off the manager.</li>
+                <li>Built training materials, including online modules and video tutorials. Onboarding time fell by 50%.</li>
+                <li>Renegotiated with suppliers to fix shipping in a difficult market.</li>
+                <li>Mapped and tested new processes before launch.</li>
+              </ul>
+            </li>
+            <li class="role">
+              <h4>In-Country Expert, EMEA</h4>
+              <p class="when">Jan 2019 – Jan 2021</p>
+              <ul>
+                <li>Delivered 300+ projects in two years, all on client deadlines.</li>
+                <li>Became the team's subject matter expert within months.</li>
+                <li>Introduced a streamlined documentation process that cut processing time.</li>
+                <li>Trained 10+ new team members. Led a complex 18-month shipping project.</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+
+        <div class="org">
+          <div class="org-head">
+            <h3>Self-employed</h3>
+            <span class="where">Johannesburg, South Africa</span>
+          </div>
+          <ol class="roles">
+            <li class="role">
+              <h4>Self-employed</h4>
+              <p class="when">Sep 2017 – Jan 2019</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Skills &amp; credentials</h2>
+        <ul class="chips" style="margin-bottom:32px">
+          <li>PRINCE2</li>
+          <li>Asana</li>
+          <li>Project Coordination</li>
+          <li>Integration</li>
+          <li>Business Process Improvement</li>
+          <li>Continuous Process Improvement</li>
+          <li>Operational Efficiency</li>
+          <li>Cross-functional Leadership</li>
+        </ul>
+        <div class="two">
+          <div>
+            <h3>Certifications</h3>
+            <ul class="plain">
+              <li>PRINCE2® Practitioner<small>PeopleCert</small></li>
+              <li>PRINCE2® Foundation<small>PeopleCert</small></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Education</h3>
+            <ul class="plain">
+              <li>University of Johannesburg</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © 2026 Rebecca Nevill · <a href="https://www.linkedin.com/in/rnevill/">LinkedIn</a>
+    </div>
+  </footer>
+</body>
 </html>
